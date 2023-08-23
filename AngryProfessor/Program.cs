@@ -1,11 +1,17 @@
 ﻿var numberTestCases = 1;
 var cancellationThreshold = 3;
-var arrivalTimes = new int[]{-2, 1, 0, 1, 2};
-var attendees = 0;
+var studentsArrivalTimes = new List<int>{-2, -1, 0, 1, 2};
 
-foreach(var time in arrivalTimes)
+Console.WriteLine(angryProfessor(cancellationThreshold, studentsArrivalTimes));
+
+string angryProfessor(int k, List<int> a)
 {
-    if(time <= 0) attendees++;
-}
+    var studentsArrivedInTime = 0;
 
-Console.WriteLine(attendees);
+    foreach(var time in a){
+        if(time <= 0) ++studentsArrivedInTime;
+    }
+
+    if(studentsArrivedInTime < k) return "YES";
+    else return "NO";
+}
