@@ -1,12 +1,23 @@
-﻿int k = 6;
+﻿
+var line = Console.ReadLine()
+                  .TrimEnd()
+                  .Split(' ')
+                  .Select(n => Convert.ToInt32(n))
+                  .ToList();
 
-for(int i = 20; i <= 23; i++) 
+Console.WriteLine(calculateNumberOfBeautifulDays(line[0], line[1], line[2]));
+
+int calculateNumberOfBeautifulDays(int i, int j, int k)
 {
-    var givenNumber = i;
-    var reversedNumber = Convert.ToInt32(string.Join("", i.ToString().Reverse()));
+    int numberBeautifulDays = 0;
 
-    if((givenNumber - reversedNumber) % k == 0)
+    for(; i <= j; i++)
     {
-        Console.WriteLine($"{i} is a beautiful day");
+        var givenNumber = i;
+        var reversedNumber = Convert.ToInt32(string.Join("", i.ToString().Reverse()));
+
+        if(Math.Abs(givenNumber - reversedNumber) % k == 0) numberBeautifulDays++;
     }
+
+    return numberBeautifulDays;
 }
