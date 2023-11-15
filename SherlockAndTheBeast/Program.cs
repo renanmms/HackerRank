@@ -1,16 +1,17 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-string key = "33355555"; 
+string key = "33333555"; 
+Console.WriteLine(key);
 
 bool isDecentNumber = IsDecentNumber(key);
 
 bool IsDecentNumber(string key)
 {
-	if(key.Contains('5') && key.Contains('3'))
+	if((key.Contains('5') || key.Contains('3')) && 
+	   CountDigitOccurences(key, '3') % 5 == 0 &&
+	   CountDigitOccurences(key, '5') % 3 == 0)
 	{
-		Console.WriteLine($"{key} is a decent number");
-		Console.WriteLine($"Number of occurences of the number 3: {CountDigitOccurences(key, '3')}");
-		Console.WriteLine($"Number of occurences of the number 5: {CountDigitOccurences(key, '5')}");
+		Console.WriteLine($"{key} is a decent number and has length of {key.Length}");
 		return true;
 	}
 	return false;
