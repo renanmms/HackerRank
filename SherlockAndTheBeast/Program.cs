@@ -1,4 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+// See https://aka.ms/new-console-template for more information
 
 string key = "33333555"; 
 Console.WriteLine(key);
@@ -19,7 +19,8 @@ bool IsDecentNumber(string key)
 
 int CountDigitOccurences(string key, char digit)
 {
-	int occurences = key.Where(c => c == digit).Count();
+	return key.Count(c => c == digit);
+}
 
 	return occurences;
 }
