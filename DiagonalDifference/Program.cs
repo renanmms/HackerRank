@@ -1,31 +1,30 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+var input = Console.ReadLine() ?? string.Empty;
+int n = Convert.ToInt32(input.Trim());
 
+List<List<int>> arr = new List<List<int>>();
 
-var matrix =  new List<List<int>>();
-var list1 = new List<int>{11, 2, 4};
-var list2 = new List<int>{4, 5, 6};
-var list3 = new List<int>{10, 8, -12};
+for (int i = 0; i < n; i++)
+{
+    arr.Add((Console.ReadLine() ?? string.Empty).TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList());
+}
 
-matrix.Add(list1);
-matrix.Add(list2);
-matrix.Add(list3);
-
-Console.WriteLine(diagonalDifference(matrix, 3));
+Console.WriteLine(diagonalDifference(arr, n));
 
 static int diagonalDifference(List<List<int>> arr, int n)
-    {
-        int rightToLeftDiagonal = 0;
-        int leftToRightDiagonal = 0;
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < n; j++){
-                if(i == j){
-                    leftToRightDiagonal += arr[i][j];
-                }
-                if((i + j) == n - 1){
-                    rightToLeftDiagonal += arr[i][j];
-                }
+{
+    int rightToLeftDiagonal = 0;
+    int leftToRightDiagonal = 0;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n; j++){
+            if(i == j){
+                leftToRightDiagonal += arr[i][j];
+            }
+            if((i + j) == n - 1){
+                rightToLeftDiagonal += arr[i][j];
             }
         }
-        return Math.Abs(rightToLeftDiagonal - leftToRightDiagonal);
     }
+    return Math.Abs(rightToLeftDiagonal - leftToRightDiagonal);
+}
